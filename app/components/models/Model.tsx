@@ -28,7 +28,7 @@ const Model: React.FC<ModelProps> = ({
   secondaryLabel,
 }) => {
   const [showModel, setShowModel] = useState(false);
-  
+
   return <div>Model</div>;
 };
 export default Model;
