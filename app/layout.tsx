@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={font.className}>
         <ClientOnly>
-          <Model isOpen />
+          <Model title='Hello world' isOpen />
           <Navbar />
         </ClientOnly>
         {children}
