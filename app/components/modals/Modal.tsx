@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import Button from '../Button';
 
-interface ModelProps {
+interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
   onSubmit: () => void;
@@ -17,7 +17,7 @@ interface ModelProps {
   secondaryActionLabel?: string;
 }
 
-const Model: React.FC<ModelProps> = ({
+const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   onSubmit,
@@ -29,15 +29,15 @@ const Model: React.FC<ModelProps> = ({
   secondaryAction,
   secondaryActionLabel,
 }) => {
-  const [showModel, setShowModel] = useState(isOpen);
+  const [showModal, setShowModal] = useState(isOpen);
 
   useEffect(() => {
-    setShowModel(isOpen);
+    setShowModal(isOpen);
   }, [isOpen]);
 
   const handleClose = useCallback(() => {
     if (disabled) {
-      setShowModel(false);
+      setShowModal(false);
       setTimeout(() => {
         onClose();
       }, 300);
@@ -68,8 +68,8 @@ const Model: React.FC<ModelProps> = ({
         <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-7 mx-auto h-full lg:h-auto md:h-auto">
           {/* {Content} */}
           <div
-            className={`translate duration-300 h-full ${showModel ? 'translate-y-0' : 'translate-y-full'}
-              ${showModel ? 'opacity-100' : 'opacity-0'}
+            className={`translate duration-300 h-full ${showModal ? 'translate-y-0' : 'translate-y-full'}
+              ${showModal ? 'opacity-100' : 'opacity-0'}
               `}
           >
             <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -104,4 +104,4 @@ const Model: React.FC<ModelProps> = ({
   );
 };
 
-export default Model;
+export default Modal;
