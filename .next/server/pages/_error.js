@@ -147,7 +147,7 @@ const _interop_require_wildcard = __webpack_require__(8760);
 const _react = /*#__PURE__*/ _interop_require_wildcard._(__webpack_require__(8038));
 const _sideeffect = /*#__PURE__*/ _interop_require_default._(__webpack_require__(2470));
 const _ampcontext = __webpack_require__(3918);
-const _headmanagercontext = __webpack_require__(7281);
+const _headmanagercontext = __webpack_require__(2796);
 const _ampmode = __webpack_require__(5732);
 const _warnonce = __webpack_require__(618);
 function defaultHead(inAmpMode = false) {
@@ -315,7 +315,7 @@ module.exports = require("next/dist/shared/lib/amp-mode.js");
 
 /***/ }),
 
-/***/ 7281:
+/***/ 2796:
 /***/ ((module) => {
 
 module.exports = require("next/dist/shared/lib/head-manager-context.js");

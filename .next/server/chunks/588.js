@@ -6539,7 +6539,7 @@ if ((typeof exports.default === "function" || typeof exports.default === "object
 
 /***/ }),
 
-/***/ 2796:
+/***/ 5452:
 /***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6726,7 +6726,7 @@ Object.defineProperty(exports, "reducer", ({
 const _routerreducertypes = __webpack_require__(664);
 const _navigatereducer = __webpack_require__(7252);
 const _serverpatchreducer = __webpack_require__(5686);
-const _restorereducer = __webpack_require__(2796);
+const _restorereducer = __webpack_require__(5452);
 const _refreshreducer = __webpack_require__(2432);
 const _prefetchreducer = __webpack_require__(5274);
 const _fastrefreshreducer = __webpack_require__(4614);
@@ -7672,7 +7672,7 @@ const _interop_require_wildcard = __webpack_require__(1113);
 const _react = /*#__PURE__*/ _interop_require_wildcard._(__webpack_require__(8038));
 const _sideeffect = /*#__PURE__*/ _interop_require_default._(__webpack_require__(2470));
 const _ampcontext = __webpack_require__(3918);
-const _headmanagercontext = __webpack_require__(7281);
+const _headmanagercontext = __webpack_require__(2796);
 const _ampmode = __webpack_require__(5732);
 const _warnonce = __webpack_require__(618);
 function defaultHead(inAmpMode = false) {
