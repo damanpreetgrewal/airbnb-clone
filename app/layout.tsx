@@ -3,7 +3,7 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/navbar/Navbar';
 import ClientOnly from './components/ClientOnly';
-import RegisterModal from './components/modals/RegisterModal';
+import RegisterModal from '@/app/components/modals/RegisterModal';
 
 export const metadata = {
   title: 'Airbnb',
