@@ -3,9 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  compiler: {
-    removeConsole: true,
-  },
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;
