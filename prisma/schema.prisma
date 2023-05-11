@@ -21,6 +21,7 @@ model User {
   updatedAt      DateTime  @updatedAt
   favoritesIds   String[]  @db.ObjectId
 
+  //Relation fields
   accounts     Account[]
   listings     Listing[]
   reservations Reservation[]
@@ -40,8 +41,10 @@ model Account {
   id_token          String? @db.String
   session_state     String?
 
+  //Relation fields
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  //Indexes
   @@unique([provider, providerAccountId])
 }
 
@@ -59,13 +62,13 @@ model Listing {
   userId        String   @db.ObjectId
   price         Int
 
+  //Relation fields
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
 
 model Reservation {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   userId     String   @db.ObjectId
   listingId  String   @db.ObjectId
   startDate  DateTime
@@ -73,6 +76,7 @@ model Reservation {
   totalPrice Int
   createdAt  DateTime @default(now())
 
+  //Relation fields
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }
