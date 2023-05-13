@@ -14,6 +14,7 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Button from '../Button';
+import { log } from 'console';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -50,6 +51,11 @@ const LoginModal = () => {
       }
     });
   };
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -88,9 +94,9 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
-          <div onClick={registerModal.onClose} className="text-neutral-800 cursor-pointer hover:underline">
-            Log In
+          <div>First time using Airbnb?</div>
+          <div onClick={toggle} className="text-neutral-800 cursor-pointer hover:underline">
+            Create an account
           </div>
         </div>
       </div>
