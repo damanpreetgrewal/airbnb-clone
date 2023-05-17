@@ -14,7 +14,6 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Button from '../Button';
-import { log } from 'console';
 
 const LoginModal = () => {
   const router = useRouter();
