@@ -53,7 +53,7 @@ const Counter: React.FC<CounterProps> = ({
         </div>
         <div className='font-light text-xl text-neutral-600'>{value}</div>
         <div
-          onClick={onReduce}
+          onClick={onAdd}
           className='
                 w-10
                 h-10
