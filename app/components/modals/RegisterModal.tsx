@@ -32,16 +32,16 @@ const RegisterModal = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = data => {
     setIsLoading(true);
 
     axios
       .post('/api/register', data)
-      .then((res) => {
+      .then(res => {
         console.log('Daman Testing', res.data);
         registerModal.onClose();
       })
-      .catch((error) => {
+      .catch(error => {
         toast.error('something went wrong!');
       })
       .finally(() => {
@@ -55,14 +55,28 @@ const RegisterModal = () => {
   }, [loginModal, registerModal]);
 
   const bodyContent = (
-    <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an Account!" />
-      <Input id="email" label="Email" disabled={isLoading} register={register} errors={errors} required />
-      <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
+    <div className='flex flex-col gap-4'>
+      <Heading title='Welcome to Airbnb' subtitle='Create an Account!' />
       <Input
-        id="password"
-        type="password"
-        label="Password"
+        id='email'
+        label='Email'
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id='name'
+        label='Name'
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input
+        id='password'
+        type='password'
+        label='Password'
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -72,11 +86,11 @@ const RegisterModal = () => {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className='flex flex-col gap-4 mt-3'>
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label='Continue with Google'
         icon={FcGoogle}
         onClick={() => {
           signIn('google');
@@ -84,16 +98,19 @@ const RegisterModal = () => {
       />
       <Button
         outline
-        label="Continue with Github"
+        label='Continue with Github'
         icon={AiFillGithub}
         onClick={() => {
           signIn('github');
         }}
       />
-      <div className="text-neutral-500 text-center mt-4 font-light">
-        <div className="justify-center flex flex-row items-center gap-2">
+      <div className='text-neutral-500 text-center mt-4 font-light'>
+        <div className='justify-center flex flex-row items-center gap-2'>
           <div>Already have an account?</div>
-          <div onClick={toggle} className="text-neutral-800 cursor-pointer hover:underline">
+          <div
+            onClick={toggle}
+            className='text-neutral-800 cursor-pointer hover:underline'
+          >
             Log In
           </div>
         </div>
@@ -105,8 +122,8 @@ const RegisterModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Register"
-      actionLabel="Continue"
+      title='Register'
+      actionLabel='Continue'
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

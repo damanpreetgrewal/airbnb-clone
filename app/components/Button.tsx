@@ -11,7 +11,14 @@ interface ButtonProps {
   icon?: IconType;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
+const Button: React.FC<ButtonProps> = ({
+  label,
+  onClick,
+  disabled,
+  outline,
+  small,
+  icon: Icon,
+}) => {
   return (
     <button
       onClick={onClick}
@@ -27,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, outline, smal
        
        `}
     >
-      {Icon && <Icon size={24} className="left-4 absolute top-3" />}
+      {Icon && <Icon size={24} className='left-4 absolute top-3' />}
       {label}
     </button>
   );
