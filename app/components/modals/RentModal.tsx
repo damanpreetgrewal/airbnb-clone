@@ -52,6 +52,7 @@ const RentModal = () => {
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
+  const imageSrc = watch('imageSrc');
 
   const Map = useMemo(
     () =>
@@ -147,7 +148,7 @@ const RentModal = () => {
     bodyContent = (
       <div className='flex flex-col gap-8'>
         <Heading
-          title='Share some Basics about your place?'
+          title='Share some basics about your place?'
           subtitle='What amenities do you have?'
         />
         <Counter
@@ -181,7 +182,10 @@ const RentModal = () => {
           title='Upload some images of your place'
           subtitle='Showcase your place to guests!'
         />
-        <ImageUpload  />
+        <ImageUpload
+          value={imageSrc}
+          onChange={value => setCustomValue('imageSrc', value)}
+        />
       </div>
     );
   }
