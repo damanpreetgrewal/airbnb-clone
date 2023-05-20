@@ -84,24 +84,26 @@ const RentModal = () => {
     setStep(value => value + 1);
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = async data => {
+  const onSubmit: SubmitHandler<FieldValues> = data => {
     if (step !== STEPS.PRICE) {
       return onNext();
     }
 
-    try {
-      setIsLoading(true);
-      await axios.post('/api/listings', data);
-      toast.success('Listing created!');
-      router.refresh();
-      reset();
-      setStep(STEPS.CATEGORY);
-      rentModal.onClose();
-    } catch (error) {
-      toast.error('Something went wrong!');
-    } finally {
-      setIsLoading(false);
-    }
+    axios
+      .post('/api/listings', data)
+      .then(() => {
+        toast.success('Listing created!');
+        router.refresh();
+        reset();
+        setStep(STEPS.CATEGORY);
+        rentModal.onClose();
+      })
+      .catch(() => {
+        toast.error('Something went wrong.');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const actionLabel = useMemo(() => {
@@ -225,8 +227,8 @@ const RentModal = () => {
         />
         <Input
           id='title'
-          disabled={isLoading}
           label='Title'
+          disabled={isLoading}
           register={register}
           errors={errors}
           required
@@ -234,8 +236,8 @@ const RentModal = () => {
         <hr />
         <Input
           id='description'
-          disabled={isLoading}
           label='Description'
+          disabled={isLoading}
           register={register}
           errors={errors}
           required
