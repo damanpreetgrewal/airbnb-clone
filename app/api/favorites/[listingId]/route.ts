@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import getCurrentUser from '@/app/actions/getCurrentUser';
 import prisma from '@/app/libs/prismadb';
 
@@ -7,7 +8,6 @@ interface IParams {
 }
 
 export async function POST(request: Request, { params }: { params: IParams }) {
-  console.log('Daman Test');
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -17,7 +17,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
   const { listingId } = params;
 
   if (!listingId || typeof listingId !== 'string') {
-    throw new Error('Invalid listingId');
+    throw new Error('Invalid ID');
   }
 
   let favoritesIds = [...(currentUser.favoritesIds || [])];
@@ -25,7 +25,9 @@ export async function POST(request: Request, { params }: { params: IParams }) {
   favoritesIds.push(listingId);
 
   const user = await prisma.user.update({
-    where: { id: currentUser.id },
+    where: {
+      id: currentUser.id,
+    },
     data: {
       favoritesIds,
     },
@@ -47,7 +49,7 @@ export async function DELETE(
   const { listingId } = params;
 
   if (!listingId || typeof listingId !== 'string') {
-    throw new Error('Invalid listingId');
+    throw new Error('Invalid ID');
   }
 
   let favoritesIds = [...(currentUser.favoritesIds || [])];
@@ -55,7 +57,9 @@ export async function DELETE(
   favoritesIds = favoritesIds.filter(id => id !== listingId);
 
   const user = await prisma.user.update({
-    where: { id: currentUser.id },
+    where: {
+      id: currentUser.id,
+    },
     data: {
       favoritesIds,
     },
