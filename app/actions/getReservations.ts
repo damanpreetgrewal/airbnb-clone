@@ -41,6 +41,7 @@ export default async function getReservations(params: IParams) {
           createdAt: reservation.listing.createdAt.toISOString(),
         },
       };
+        return safeReservation;
     });
 
     return safeReservations;
