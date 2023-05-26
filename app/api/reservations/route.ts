@@ -1,20 +1,35 @@
 import bcrypt from 'bcrypt';
 import prisma from '@/app/libs/prismadb';
 import { NextResponse } from 'next/server';
+import getCurrentUser from '@/app/actions/getCurrentUser';
 
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
+  const currentUser = await getCurrentUser();
+
+  if (!currentUser) {
+    return NextResponse.error();
+  }
+
   const body = await request.json();
-  const { email, name, password } = body;
+  const { listingId, startDate, endDate, totalPrice } = body;
 
-  const hashedPassword = await bcrypt.hash(password, 12);
+  if (!listingId || !startDate || !endDate || !totalPrice) {
+    return NextResponse.error();
+  }
 
-  const user = await prisma.user.create({
+  const listingAndReservation = await prisma.listing.update({
+    where: { id: listingId },
     data: {
-      email,
-      name,
-      hashedPassword,
+      reservations: {
+        create: {
+          userId: currentUser.id,
+          startDate,
+          endDate,
+          totalPrice,
+        },
+      },
     },
   });
 
-  return NextResponse.json(user);
+  return NextResponse.json(listingAndReservation);
 }
