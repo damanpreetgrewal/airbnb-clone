@@ -39,6 +39,8 @@ const RegisterModal = () => {
       .post('/api/register', data)
       .then(res => {
         console.log('Daman Testing', res.data);
+        toast.success('Account created!');
+        loginModal.onOpen();
         registerModal.onClose();
       })
       .catch(error => {
