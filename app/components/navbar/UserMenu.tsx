@@ -32,7 +32,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     }
     //Open Rent Modal
     RentModal.onOpen();
-  }, [currentUser, loginModal]);
+  }, [currentUser, loginModal, RentModal]);
 
   return (
     <div className='relative'>
@@ -63,10 +63,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   label='My Trips'
                 />
                 <MenuItem
-                  onClick={() => router.push('/reservations')}
+                  onClick={() => router.push('/favorites')}
                   label='My Favourites'
                 />
-                <MenuItem onClick={() => {}} label='My Reservations' />
+                <MenuItem
+                  onClick={() => router.push('/reservations')}
+                  label='My Reservations'
+                />
                 <MenuItem onClick={() => {}} label='My Properties' />
                 <MenuItem onClick={RentModal.onOpen} label='AirBnb my Home' />
                 <hr />
