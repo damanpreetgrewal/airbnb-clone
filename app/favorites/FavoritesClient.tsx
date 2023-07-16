@@ -38,6 +38,5 @@ const FavoritesClient: React.FC<FavoritesClientProps> = ({
       </div>
     </Container>
   );
-  return <div>FavoritesClient</div>;
 };
 export default FavoritesClient;
